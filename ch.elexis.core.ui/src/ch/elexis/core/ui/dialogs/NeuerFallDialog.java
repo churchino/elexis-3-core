@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
 import ch.elexis.core.data.events.ElexisEventDispatcher;
+import ch.elexis.core.ui.Messages;
 import ch.elexis.core.ui.views.FallDetailBlatt2;
 import ch.elexis.data.Fall;
 import ch.elexis.data.Patient;

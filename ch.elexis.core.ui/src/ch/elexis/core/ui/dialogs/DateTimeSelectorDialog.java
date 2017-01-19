@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+import ch.elexis.core.ui.Messages;
 import ch.rgw.tools.TimeTool;
 
 public class DateTimeSelectorDialog extends Dialog {

@@ -25,6 +25,7 @@ import org.eclipse.swt.widgets.Text;
 import com.tiff.common.ui.datepicker.DatePicker;
 
 import ch.elexis.core.data.events.ElexisEventDispatcher;
+import ch.elexis.core.ui.Messages;
 import ch.elexis.core.ui.icons.ImageSize;
 import ch.elexis.core.ui.icons.Images;
 import ch.elexis.core.ui.util.SWTHelper;

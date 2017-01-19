@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
 import ch.elexis.core.data.activator.CoreHub;
+import ch.elexis.core.ui.Messages;
 import ch.elexis.core.ui.util.LimitedText;
 
 public class NeueBestellungDialog extends TitleAreaDialog {

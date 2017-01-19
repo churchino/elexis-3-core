@@ -39,6 +39,7 @@ import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 
+import ch.elexis.core.ui.Messages;
 import ch.elexis.core.ui.UiDesk;
 import ch.elexis.core.ui.data.UiDBImage;
 import ch.elexis.core.ui.util.SWTHelper;

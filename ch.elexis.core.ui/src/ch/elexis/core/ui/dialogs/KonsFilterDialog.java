@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import ch.elexis.core.ui.Messages;
 import ch.elexis.core.ui.UiDesk;
 import ch.elexis.core.ui.actions.KonsFilter;
 import ch.elexis.core.ui.icons.ImageSize;
