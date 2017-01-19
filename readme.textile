@@ -53,3 +53,14 @@ are contained and inter-dependent as follows:
 
 !FeatureStructure.png!
 
+
+h3. internationalization (i18n)
+
+We use "Trema":http://netceteragroup.github.io/trema-eclipse/. It is comprised of an Eclipse-Plugin, which has a nice editor for the texts.trm file placed at the root of
+each project which has messages to be translated into different languages. The "Trema maven plugin":http://netceteragroup.github.io/trema-maven/ creates messages_<lang>.properties
+files in an early build phase.
+
+With the Tream plugin each save action updates the messages*.properties files specified in the pom.xml. But no new constants are added to the Messages.java file. This must be done manually.
+
+For finding the name of the localized string (e.g. in a dialog), it is helpful to activate the line @<filter>addkeytovalue</filter>@ (see "pom.xml":ch.elexis.core.ui/pom.xml).
+After rebuilding each localized string gets the name of the key appended.

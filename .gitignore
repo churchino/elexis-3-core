@@ -10,4 +10,4 @@ target/
 jetty.log
 workspace/
 profile.tmp
-
+work/

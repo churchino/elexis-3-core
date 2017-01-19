@@ -7,4 +7,41 @@
   </parent>
   <artifactId>ch.elexis.core.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.netcetera.trema</groupId>
+        <artifactId>trema-maven-plugin</artifactId>
+        <version>0.2.0</version>
+        <executions>
+          <execution>
+          <goals>
+            <goal>exportProperties</goal>
+          </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- explicit path to the trema database file to be exported -->
+          <tremaFile>${project.basedir}/texts.trm</tremaFile>
+          <!-- explicit path for the properties files that are generated -->
+          <basename>${project.basedir}/src/ch/elexis/core/ui/messages</basename>
+          <!-- export the language de_DE into a fallback properties file without the language in the filename -->
+          <defaultlanguage>de</defaultlanguage>
+          <!-- specify the languages to be exported -->
+          <languages>
+            <language>en</language>
+            <language>fr</language>
+            <language>it</language>
+            <language>de</language>
+          </languages>
+          <!-- apply a filter to transform text values during export -->
+          <filters>
+            <filter>replacehtmlnewline</filter>
+            <filter>addkeytovalue</filter>
+            <filter>messageformat</filter>
+          </filters>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
