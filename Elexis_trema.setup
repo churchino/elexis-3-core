@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:mylyn="http://www.eclipse.org/oomph/setup/mylyn/1.0"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    name="elexis"
+    label="Elexis-Trema">
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="User Preferences">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/UserPreferences">
+      <detail
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.annotation.nullanalysis">
+        <value>record</value>
+      </detail>
+      <detail
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.potentialNullReference">
+        <value>record</value>
+      </detail>
+      <detail
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.nullReference">
+        <value>record</value>
+      </detail>
+    </annotation>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.jdt.core">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.annotation.nullanalysis"
+          value="enabled"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.nullReference"
+          value="error"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.potentialNullReference"
+          value="error"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.ui.ide">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.ide/WORKSPACE_NAME"
+          value="Elexis (${scope.project.stream.name})"/>
+    </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Common">
+    <setupTask
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.7"
+        location="${jre.location-1.7}"/>
+    <setupTask
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.8"
+        location="${jre.location-1.8}"/>
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-Xmx"
+        value="2048m"
+        vm="true">
+      <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-Doomph.redirection.elexissetup"
+        value="=https://raw.githubusercontent.com/elexis/elexis-3-core/master/Elexis.setup->${core.git.clone.location|uri}/Elexis.setup"
+        vm="true"/>
+    <setupTask
+        xsi:type="setup:ResourceCreationTask"
+        excludedTriggers="STARTUP MANUAL"
+        content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
+        targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
+        encoding="UTF-8">
+      <description>Initialize JDT's package explorer to show working sets as its root objects</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        defaultValue="Luna"
+        storageURI="scope://Workspace"/>
+  </setupTask>
+  <setupTask
+      xsi:type="git:GitCloneTask"
+      id="core.git.clone"
+      remoteURI="elexis/elexis-3-core">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="inherit">
+        <value>github.remoteURIs</value>
+      </detail>
+      <detail
+          key="label">
+        <value>${scope.project.label} Github repository</value>
+      </detail>
+      <detail
+          key="target">
+        <value>remoteURI</value>
+      </detail>
+    </annotation>
+    <description>Elexis 3 Core</description>
+  </setupTask>
+  <setupTask
+      xsi:type="git:GitCloneTask"
+      id="base.git.clone"
+      remoteURI="elexis/elexis-3-base"
+      pushURI="">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="inherit">
+        <value>github.remoteURIs</value>
+      </detail>
+      <detail
+          key="label">
+        <value>${scope.project.label} Github repository</value>
+      </detail>
+      <detail
+          key="target">
+        <value>remoteURI</value>
+      </detail>
+    </annotation>
+    <description>Elexis 3 Base</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="org.sonatype.tycho.m2e.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.mylyn.github.feature.feature.group"/>
+    <requirement
+        name="fr.obeo.releng.targetplatform-feature.feature.group"/>
+    <requirement
+        name="com.essiembre.eclipse.rbe.feature.group"/>
+    <requirement
+        name="org.eclipse.m2e.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.wb.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
+    <requirement
+      name="org.eclipse.dltk.ruby.feature.group"/>
+    <!--requirement
+        name="org.eclipse.releng.tools.feature.feature.group"/-->
+    <repository
+        url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/"/>
+    <repository
+        url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest/"/>
+    <repository
+        url="https://raw.githubusercontent.com/essiembre/eclipse-rbe/master/eclipse-rbe-update-site/"/>
+    <repository
+        url="https://raw.githubusercontent.com/essiembre/eclipse-rbe/master/eclipse-rbe-update-site/"/>
+    <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.workingsets:WorkingSetTask">
+    <workingSet
+        name="elexis-3-core">
+      <predicate
+          xsi:type="predicates:RepositoryPredicate"
+          project="ch.elexis.sdk"/>
+    </workingSet>
+    <workingSet
+        name="elexis-3-base">
+      <predicate
+          xsi:type="predicates:RepositoryPredicate"
+          project="at.medevit.ch.artikelstamm.elexis.common"/>
+    </workingSet>
+  </setupTask>
+  <setupTask
+      xsi:type="mylyn:MylynBuildsTask"
+      id="srv.elexis.info.core"
+      serverURL="https://srv.elexis.info/jenkins/"
+      userID="">
+    <buildPlan
+        name="Elexis-3.0-Core"/>
+    <buildPlan
+        name="Elexis-3.0-Base"/>
+  </setupTask>
+  <setupTask
+      xsi:type="mylyn:MylynQueriesTask"
+      id="github.elexis-3-core.pullrequests"
+      connectorKind="githubPullRequests"
+      repositoryURL="https://github.com/elexis/elexis-3-core"
+      userID="${github.user.id}"
+      password="">
+    <query summary="core pull requests"
+        url="">
+      <attribute
+          key="state"
+          value="open::"/>
+    </query>
+    <description>elexis/elexis-3-core pull requests</description>
+  </setupTask>
+  <setupTask
+      xsi:type="mylyn:MylynQueriesTask"
+      id="github.elexis-3-base.pullrequests"
+      connectorKind="githubPullRequests"
+      repositoryURL="https://github.com/elexis/elexis-3-base"
+      userID="${github.user.id}"
+      password="">
+    <query summary="base pull requests">
+      <attribute
+          key="state"
+          value="open::"/>
+    </query>
+    <description>elexis/elexis-3-base pull requests</description>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask">
+    <sourceLocator
+        rootFolder="${core.git.clone.location}"/>
+    <sourceLocator
+        rootFolder="${base.git.clone.location}"/>
+  </setupTask>
+  <setupTask
+      xsi:type="pde:TargetPlatformTask"
+      id="ch.elexis.target.juno-target.target"
+      name="Juno for Elexis 3.0"/>
+  <project name="Medelexis"
+      label="">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="medelexis.git.clone"
+        remoteURI="https://git.medelexis.ch/medelexis-3.git"
+        pushURI="https://git.medelexis.ch/medelexis-3.git">
+      <description>Medelexis 3 plug-ins</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="medelexis-3">
+        <predicate
+            xsi:type="predicates:RepositoryPredicate"
+            project="ch.medelexis.releng"/>
+      </workingSet>
+    </setupTask>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask">
+      <sourceLocator
+          rootFolder="${medelexis.git.clone.location}"/>
+    </setupTask>
+    <project
+        name="Application"
+        label="">
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="medelexis.application.git.clone"
+          remoteURI="https://gitext.medelexis.ch/medelexis-3-application.git"
+          pushURI="https://gitext.medelexis.ch/medelexis-3-application.git">
+        <description>Medelexis 3 application</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup.workingsets:WorkingSetTask">
+        <workingSet
+            name="medelexis-3-application">
+          <predicate
+              xsi:type="predicates:RepositoryPredicate"
+              project="ch.medelexis.application"/>
+        </workingSet>
+      </setupTask>
+      <setupTask
+          xsi:type="projects:ProjectsImportTask">
+        <sourceLocator
+            rootFolder="${medelexis.application.git.clone.location}"/>
+      </setupTask>
+      <description>Core Application development setup for Medelexis</description>
+    </project>
+    <description>Commercially developed version of Elexis, development environment</description>
+  </project>
+  <project name="Austria">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="austria.git.clone"
+        remoteURI="elexis/elexis-3-austria">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>github.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} Github repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <description>Elexis 3 Österreich Plug-Ins</description>
+    </setupTask>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask">
+      <sourceLocator
+          rootFolder="${austria.git.clone.location}"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask"
+        id="">
+      <workingSet
+          name="elexis-3-austria">
+        <predicate
+            xsi:type="predicates:RepositoryPredicate"
+            project="at.medevit.elexis.at"/>
+      </workingSet>
+    </setupTask>
+    <description>Elexis Österreich Plug-Ins</description>
+  </project>
+  <stream name="master"/>
+  <stream name="release"/>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
+  <description>Elektronische Praxis</description>
+</setup:Project>
